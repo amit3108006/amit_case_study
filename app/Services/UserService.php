@@ -17,4 +17,8 @@ class UserService {
         }
         return new UserLoginResource($objUser);
     }
+
+    public function getLoggedInUser() {
+        return auth("sanctum")->user();
+    }
 }

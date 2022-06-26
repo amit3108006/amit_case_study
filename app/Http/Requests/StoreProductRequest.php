@@ -5,9 +5,10 @@ namespace App\Http\Requests;
 use App\Traits\FailedValidationTrait;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserLoginRequest extends FormRequest
+class StoreProductRequest extends FormRequest
 {
     use FailedValidationTrait;
+
     /**
      * Determine if the user is authorized to make this request.
      * As of now kept it true, but in future we can add some kind of condition in it
@@ -27,9 +28,11 @@ class UserLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            "email" => "required|email",
-            "password" => "required",
-            "session_id" => "nullable"
+            "name" => "required|string|max:256",
+            "description" => "required|string",
+            "category_id" => "required|exists:categories,id",
+            "price" => "required|numeric|max:9999999.99",
+            "avatar" => "required|string|url"
         ];
     }
 }

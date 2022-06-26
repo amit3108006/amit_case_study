@@ -26,17 +26,17 @@ Route::middleware('auth:sanctum')->group(function () {
     // methods for product
 Route::controller(ProductController::class)->group(function () {
         Route::post("/products", "store");
-        Route::post("/products/{id}", "update");
-        Route::delete("/products/{id}", "destroy");
+        Route::post("/products/{product}", "update");
+        Route::delete("/products/{product}", "destroy");
+    });
 });
 
 // methods for cart
 Route::controller(CartController::class)->group(function () {
-        Route::post("/cart", "store");
-        Route::put("/cart/{id}", "update");
-        Route::delete("/cart/{id}", "destroy");
-        Route::get("/cart", "index");
-    });
+    Route::post("/cart", "store");
+    Route::put("/cart/{cart}", "update");
+    Route::delete("/cart/{cart}", "destroy");
+    Route::get("/cart", "index");
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

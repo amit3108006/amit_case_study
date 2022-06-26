@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("session_id")->nullable()->comment("For guest users");
             $table->foreignId("product_id")->constrained("products")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId("user_id")->constrained("users")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("user_id")->nullable()->constrained("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->smallInteger("qty");
             $table->timestamps();
         });

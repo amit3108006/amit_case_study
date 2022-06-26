@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Traits\FailedValidationTrait;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserLoginRequest extends FormRequest
+class UpdateProductRequest extends FormRequest
 {
     use FailedValidationTrait;
     /**
@@ -27,9 +27,11 @@ class UserLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            "email" => "required|email",
-            "password" => "required",
-            "session_id" => "nullable"
+            "name" => "required|string|max:256",
+            "description" => "required|string",
+            "category_id" => "required|exists:categories,id",
+            "price" => "required|numeric|max:9999999.99",
+            "avatar" => "required|string|url"
         ];
     }
 }
